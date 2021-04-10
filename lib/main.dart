@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Appbar',
       theme: ThemeData(
       ),
-      home: LoginPage(),
+      home: TabPage(),
     );
   }
 }

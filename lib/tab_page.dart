@@ -26,8 +26,8 @@ class _TabPageState extends State<TabPage> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
                   ),
-                  child: Text('  연도 선택  ',
-                    style: TextStyle(fontWeight: FontWeight.bold),),
+                  child: Text('   연도 선택   ',
+                    style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                   onPressed: (){
                     print('연도 선택');
                   },
@@ -35,31 +35,34 @@ class _TabPageState extends State<TabPage> {
                   color: Color(0xffFFFF9090),
                 ),
                 Padding(padding: EdgeInsets.all(8.0)),
-                RaisedButton(
-                  child: Text("     2017", style: TextStyle(
-                      fontSize: 30, fontWeight: FontWeight.bold),
-                  ),onPressed: () {},
+                RaisedButton.icon(
+                  onPressed: () { print('Button Click');},
+                  label: Text("   2017", style: TextStyle(
+                      fontSize: 30, fontWeight: FontWeight.bold),),
+                  icon: Icon(Icons.music_note,),
                 ),
                 Padding(padding: EdgeInsets.all(0.0)),
-                RaisedButton(
-                  child :
-                  Text("     2018", style: TextStyle(
-                      fontSize: 30, fontWeight: FontWeight.bold),
-                  ),
-
-                  onPressed: () {},
+                RaisedButton.icon(
+                  onPressed: () { print('Button Click');},
+                  label: Text("   2018", style: TextStyle(
+                      fontSize: 30, fontWeight: FontWeight.bold),),
+                  icon: Icon(Icons.multitrack_audio,),
                 ),
 
                 Padding(padding: EdgeInsets.all(0.0)),
-                RaisedButton(
-                    child : Text("     2019", style: TextStyle(
-                        fontSize: 30, fontWeight: FontWeight.bold),
-                    ),onPressed: () {}),
+                RaisedButton.icon(
+                  onPressed: () { print('Button Click');},
+                  label: Text("   2019", style: TextStyle(
+                      fontSize: 30, fontWeight: FontWeight.bold),),
+                  icon: Icon(Icons.mic,),
+                ),
                 Padding(padding: EdgeInsets.all(0.0)),
-                RaisedButton(
-                    child : Text("     2020", style: TextStyle(
-                        fontSize: 30, fontWeight: FontWeight.bold),
-                    ),onPressed: () {}),
+                RaisedButton.icon(
+                  onPressed: () { print('Button Click');},
+                  label: Text("   2020", style: TextStyle(
+                      fontSize: 30, fontWeight: FontWeight.bold),),
+                  icon: Icon(Icons.play_circle_outline,),
+                ),
               ],
             ),
           ),
