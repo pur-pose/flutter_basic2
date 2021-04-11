@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basic/2017.dart';
 import 'package:flutter_basic/login_page.dart';
 import 'package:flutter_basic/root_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -52,10 +53,7 @@ class MyPage extends StatelessWidget {
               child: Text('  로그아웃  ',
                 style: TextStyle(fontWeight: FontWeight.bold),),
                 onPressed: (){
-                  Navigator.push(context,
-                    MaterialPageRoute<void>(builder: (BuildContext context)
-                    {return LoginPage();}),
-                  );
+                  Navigator.of(context).pop();
                 },
               textColor: Colors.black,
               color: Color(0xffFFE0E0E0),

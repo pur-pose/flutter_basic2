@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_basic/main.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
@@ -8,6 +10,18 @@ class one_page extends StatefulWidget {
 }
 
 class _one_pageState extends State<one_page> {
+
+  String greeting = "Ready!";
+  @override
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 3),(){
+      setState(() {
+        greeting = "Start!";
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
