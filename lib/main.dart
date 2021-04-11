@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Appbar',
       theme: ThemeData(
       ),
-      home: TabPage(),
+      home: LoginPage(),
     );
   }
 }
@@ -39,7 +39,10 @@ class MyPage extends StatelessWidget {
               child: Text('  게임시작  ',
                           style: TextStyle(fontWeight: FontWeight.bold),),
               onPressed: (){
-                print('게임시작');
+                Navigator.push(context,
+                    MaterialPageRoute<void>(builder: (BuildContext context)
+                {return TabPage();}),
+                );
               },
               textColor: Colors.white,
               color: Color(0xffFF5E5E5E),
@@ -48,9 +51,12 @@ class MyPage extends StatelessWidget {
             RaisedButton(
               child: Text('  로그아웃  ',
                 style: TextStyle(fontWeight: FontWeight.bold),),
-              onPressed: (){
-                print('로그아웃');
-              },
+                onPressed: (){
+                  Navigator.push(context,
+                    MaterialPageRoute<void>(builder: (BuildContext context)
+                    {return LoginPage();}),
+                  );
+                },
               textColor: Colors.black,
               color: Color(0xffFFE0E0E0),
 

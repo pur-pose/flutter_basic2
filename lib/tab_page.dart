@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basic/2017.dart';
+import 'package:flutter_basic/2018.dart';
+import 'package:flutter_basic/2019.dart';
+import 'package:flutter_basic/2020.dart';
 
 class TabPage extends StatefulWidget {
   @override
@@ -36,14 +40,24 @@ class _TabPageState extends State<TabPage> {
                 ),
                 Padding(padding: EdgeInsets.all(8.0)),
                 RaisedButton.icon(
-                  onPressed: () { print('Button Click');},
+                  onPressed: (){
+                    Navigator.push(context,
+                      MaterialPageRoute<void>(builder: (BuildContext context)
+                      {return one_page();}),
+                    );
+                  },
                   label: Text("   2017", style: TextStyle(
                       fontSize: 30, fontWeight: FontWeight.bold),),
                   icon: Icon(Icons.music_note,),
                 ),
                 Padding(padding: EdgeInsets.all(0.0)),
                 RaisedButton.icon(
-                  onPressed: () { print('Button Click');},
+                  onPressed: (){
+                    Navigator.push(context,
+                      MaterialPageRoute<void>(builder: (BuildContext context)
+                      {return two_page();}),
+                    );
+                  },
                   label: Text("   2018", style: TextStyle(
                       fontSize: 30, fontWeight: FontWeight.bold),),
                   icon: Icon(Icons.multitrack_audio,),
@@ -51,14 +65,24 @@ class _TabPageState extends State<TabPage> {
 
                 Padding(padding: EdgeInsets.all(0.0)),
                 RaisedButton.icon(
-                  onPressed: () { print('Button Click');},
+                  onPressed: (){
+                    Navigator.push(context,
+                      MaterialPageRoute<void>(builder: (BuildContext context)
+                      {return three_page();}),
+                    );
+                  },
                   label: Text("   2019", style: TextStyle(
                       fontSize: 30, fontWeight: FontWeight.bold),),
                   icon: Icon(Icons.mic,),
                 ),
                 Padding(padding: EdgeInsets.all(0.0)),
                 RaisedButton.icon(
-                  onPressed: () { print('Button Click');},
+                  onPressed: (){
+                    Navigator.push(context,
+                      MaterialPageRoute<void>(builder: (BuildContext context)
+                      {return four_page();}),
+                    );
+                  },
                   label: Text("   2020", style: TextStyle(
                       fontSize: 30, fontWeight: FontWeight.bold),),
                   icon: Icon(Icons.play_circle_outline,),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basic/main.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
 class LoginPage extends StatefulWidget {
@@ -22,7 +23,12 @@ class _LoginPageState extends State<LoginPage> {
             Padding(padding: EdgeInsets.all(20.0)),
             SignInButton(
               Buttons.Google,
-              onPressed: () {},)
+                onPressed: (){
+                  Navigator.push(context,
+                    MaterialPageRoute<void>(builder: (BuildContext context)
+                    {return MyPage();}),
+                  );
+                },)
           ],
           )
       ),
