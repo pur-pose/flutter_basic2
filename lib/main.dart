@@ -45,7 +45,7 @@ class MyPage extends StatelessWidget {
               child: Text('  게임시작  ',
                           style: TextStyle(fontWeight: FontWeight.bold),),
               onPressed: (){
-                .push(context,
+                Navigator.push(context,
                     MaterialPageRoute<void>(builder: (BuildContext context)
                 {return TabPage();}),
                 );
