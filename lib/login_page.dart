@@ -1,38 +1,54 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_basic/main.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class LoginPage extends StatefulWidget {
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
 
-class _LoginPageState extends State<LoginPage> {
+
+
+class LoginPage extends StatelessWidget {
+
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar : AppBar(
+      appBar: AppBar(
         backgroundColor: Color(0xffFFFF9090),
         centerTitle: true,
       ),
-      body : Center(
+      body: Center(
           child: Column(children: <Widget>
           [Padding(padding: EdgeInsets.all(20.0)),
-            Image.asset('images/logo.jpg',width: 500,height: 200,),
-            Image.asset('images/dancing.jpg',width: 300, height: 140,),
+            Image.asset('images/logo.jpg', width: 500, height: 200,),
+            Image.asset('images/dancing.jpg', width: 300, height: 140,),
             Padding(padding: EdgeInsets.all(20.0)),
             SignInButton(
               Buttons.Google,
-                onPressed: (){
-                  Navigator.push(context,
-                    MaterialPageRoute<void>(builder: (BuildContext context)
-                    {return MyPage();}),
-                  );
-                },)
+              onPressed: () {
+                _handleSignIn().then((user) {
+                  print(user);
+                });
+              },
+            )
           ],
           )
       ),
       backgroundColor: Color(0xfff7eded),
     );
+  }
+  Future<User> _handleSignIn() async {
+    GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+    GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+    User user = (await _auth.signInWithCredential(GoogleAuthProvider.credential(
+        idToken: googleAuth.idToken, accessToken: googleAuth.accessToken)))
+        .user;
+    print("signed in " + user.displayName);
+    return user;
   }
 }

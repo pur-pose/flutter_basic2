@@ -5,12 +5,17 @@ import 'package:flutter_basic/root_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_basic/tab_page.dart';
 
-void main() {
+void main() async{
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp()); //main 화면이 my app 클래스를 호출//
 }
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,7 +45,7 @@ class MyPage extends StatelessWidget {
               child: Text('  게임시작  ',
                           style: TextStyle(fontWeight: FontWeight.bold),),
               onPressed: (){
-                Navigator.push(context,
+                .push(context,
                     MaterialPageRoute<void>(builder: (BuildContext context)
                 {return TabPage();}),
                 );
