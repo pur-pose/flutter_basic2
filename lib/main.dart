@@ -4,6 +4,8 @@ import 'package:flutter_basic/login_page.dart';
 import 'package:flutter_basic/root_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_basic/tab_page.dart';
+import 'package:flutter_basic/test.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async{
 
@@ -14,7 +16,6 @@ void main() async{
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
-
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +48,7 @@ class MyPage extends StatelessWidget {
               onPressed: (){
                 Navigator.push(context,
                     MaterialPageRoute<void>(builder: (BuildContext context)
-                {return TabPage();}),
+                {return RootPage();}),
                 );
               },
               textColor: Colors.white,

@@ -3,8 +3,14 @@ import 'package:flutter_basic/2017.dart';
 import 'package:flutter_basic/2018.dart';
 import 'package:flutter_basic/2019.dart';
 import 'package:flutter_basic/2020.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_basic/login_page.dart';
+import 'package:flutter_basic/main.dart';
 
 class TabPage extends StatefulWidget {
+  final User user;
+  TabPage(this.user);
+
   @override
   _TabPageState createState() => _TabPageState();
 }
