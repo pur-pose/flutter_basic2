@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_basic/main.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class one_page extends StatefulWidget {
   @override
@@ -34,4 +35,5 @@ class _one_pageState extends State<one_page> {
     body : Center()
     ,backgroundColor: Color(0xfff7eded),);
   }
+
 }

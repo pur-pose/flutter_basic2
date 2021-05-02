@@ -6,6 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_basic/tab_page.dart';
 import 'package:flutter_basic/test.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 void main() async{
 
@@ -21,14 +22,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Appbar',
-      theme: ThemeData(
-      ),
+      theme: ThemeData(fontFamily: 'BM-HANNA'),
       home: LoginPage(),
     );
   }
 }
 
 class MyPage extends StatelessWidget {
+  final User user;
+  MyPage(this.user);
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,13 +46,32 @@ class MyPage extends StatelessWidget {
             Image.asset('images/logo.jpg',width: 500,height: 200,),
             Image.asset('images/dancing.jpg',width: 300, height: 140,),
             Padding(padding: EdgeInsets.all(20.0)),
+            StreamBuilder(
+              stream: FirebaseAuth.instance.authStateChanges(),
+              builder: (BuildContext context, AsyncSnapshot<User> snapshot) {
+                if (snapshot.data == null) {
+                  return LoginPage();
+                } else {
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("${snapshot.data.displayName}님 환영합니다.",
+                            style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold)),
+
+                      ],
+                    ),
+                  );
+                }
+              },
+            ),
             RaisedButton(
               child: Text('  게임시작  ',
                           style: TextStyle(fontWeight: FontWeight.bold),),
               onPressed: (){
                 Navigator.push(context,
                     MaterialPageRoute<void>(builder: (BuildContext context)
-                {return RootPage();}),
+                {return TabPage();}),
                 );
               },
               textColor: Colors.white,
@@ -59,21 +82,38 @@ class MyPage extends StatelessWidget {
               child: Text('  로그아웃  ',
                 style: TextStyle(fontWeight: FontWeight.bold),),
                 onPressed: (){
-                  Navigator.of(context).pop();
+                FirebaseAuth.instance.signOut();
+                _googleSignIn.signOut();
+
+                Navigator.push(context,
+                  MaterialPageRoute<void>(builder: (BuildContext context)
+                  {return LoginPage();}),
+                );
                 },
               textColor: Colors.black,
               color: Color(0xffFFE0E0E0),
 
             ),
-          ],
+
+
+
+
+    ],
+
+
 
 
           ),
           ),
+
+
+
         backgroundColor: Color(0xfff7eded),
     );
 
   }
+
+
 }
 
 

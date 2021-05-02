@@ -1,3 +1,5 @@
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_basic/2017.dart';
 import 'package:flutter_basic/2018.dart';
@@ -8,8 +10,7 @@ import 'package:flutter_basic/login_page.dart';
 import 'package:flutter_basic/main.dart';
 
 class TabPage extends StatefulWidget {
-  final User user;
-  TabPage(this.user);
+
 
   @override
   _TabPageState createState() => _TabPageState();
@@ -30,8 +31,30 @@ class _TabPageState extends State<TabPage> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget> [
-                Image.asset('images/logo2.png',width: 600,height: 250,),
-                Padding(padding: EdgeInsets.only(top:70.0)),
+
+                StreamBuilder(
+                  stream: FirebaseAuth.instance.authStateChanges(),
+                  builder: (BuildContext context, AsyncSnapshot<User> snapshot) {
+                    if (snapshot.data == null) {
+                      return LoginPage();
+                    } else {
+                      return Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("${snapshot.data.displayName}님",
+                            textAlign: TextAlign.right,
+                              style: TextStyle(fontSize:18,fontWeight: FontWeight.bold, height: 1,
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                    }
+                  },
+                ),
+                Image.asset('images/logo2.png',width: 600,height: 230,),
+                Padding(padding: EdgeInsets.only(top:50.0)),
                 RaisedButton(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
@@ -93,6 +116,9 @@ class _TabPageState extends State<TabPage> {
                       fontSize: 30, fontWeight: FontWeight.bold),),
                   icon: Icon(Icons.play_circle_outline,),
                 ),
+
+
+
               ],
             ),
           ),

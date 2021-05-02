@@ -1,6 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_basic/main.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class four_page extends StatefulWidget {
   @override
@@ -8,16 +17,150 @@ class four_page extends StatefulWidget {
 }
 
 class _four_pageState extends State<four_page> {
+
   @override
   Widget build(BuildContext context) {
+    /*var firestore;
+     return StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance.collection('2017').snapshots(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (!snapshot.hasData) {
+            return Center(child : CircularProgressIndicator());
+          }*/
     return Scaffold(
-      appBar : AppBar(
-        title: Text('둠칫! 둠칫!',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+      appBar: AppBar(
+        title: Text(
+          '둠칫! 둠칫!',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Color(0xffFFFF9090),
         centerTitle: true,
       ),
-      body : Center()
-      ,backgroundColor: Color(0xfff7eded),);
+
+      /*문제 끌어오기*/
+      body: Center(
+          child: FutureBuilder(
+            future: musicList(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData != null) {
+                return Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children:<Widget> [
+                        Padding(padding: EdgeInsets.all(20.0)),
+                        Container(
+                         decoration: BoxDecoration(
+                           color: Colors.white,
+                           borderRadius: BorderRadius.all(Radius.circular(10.0))
+                         ),
+                         height: 280, width: 380,
+                         padding: EdgeInsets.only(left: 20, top:20, bottom: 20, right: 20),
+                         child: Text(
+                           sublist[0].Question,
+                           style: TextStyle( fontSize: 18, fontWeight: FontWeight.bold, height: 3.5),
+                           textAlign: TextAlign.center,
+                       ),
+                       ),
+
+                        /*보기 가져오기*/
+
+                        /*1번째*/
+                       Padding(padding: EdgeInsets.all(10.0)),
+                           ElevatedButton(
+                             style: ElevatedButton.styleFrom(
+                               onSurface: Color(0xffFFFF9090),
+                               shape: StadiumBorder(),
+
+                             ),
+
+                             child: Text(sublist[0].Answer,
+                             style: TextStyle( fontSize: 16, fontWeight: FontWeight.bold, height: 1,
+                             color: Colors.white),
+                             textAlign: TextAlign.center,
+                           ),
+                           onPressed: (){}),
+                        /*2번째*/
+                           ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              onSurface: Color(0xffFFFF9090),
+                              shape: StadiumBorder(),
+                            ),
+                            child: Text(sublist[5].Answer,
+                              style: TextStyle( fontSize: 16, fontWeight: FontWeight.bold, height: 1,
+                                  color: Colors.white),
+                              textAlign: TextAlign.center,
+                            ),
+                            onPressed: (){}),
+
+                        /*3번째*/
+
+                           ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              onSurface: Color(0xffFFFF9090),
+                              shape: StadiumBorder(),
+                            ),
+                            child: Text(sublist[4].Answer,
+                              style: TextStyle( fontSize: 16, fontWeight: FontWeight.bold, height: 1,
+                                  color: Colors.white),
+                              textAlign: TextAlign.center,
+                            ),
+                            onPressed: (){}),
+
+                        /*4번째*/
+                           ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              onSurface: Color(0xffFFFF9090),
+                              shape: StadiumBorder(),
+                            ),
+                            child: Text(sublist[3].Answer,
+                              style: TextStyle( fontSize: 16, fontWeight: FontWeight.bold, height: 1,
+                                  color: Colors.white),
+                              textAlign: TextAlign.center,
+                            ),
+                            onPressed: (){}),
+
+
+
+              ],
+
+                    )
+                );
+              }else{};
+              }
+      )
+      ),
+      backgroundColor: Color(0xfff7eded),
+    );
   }
 }
+
+//파이어스토어 DB연동//
+Future musicList() async {
+  sublist.clear();
+  QuerySnapshot querySnapshot =
+      await FirebaseFirestore.instance.collection("2020").limit(20).get();
+
+  for (int i = 0; i < querySnapshot.size; i++) {
+    var cid = querySnapshot.docs[i].id;
+    var Question = querySnapshot.docs[i].data()["Question"];
+    var Answer = querySnapshot.docs[i].data()["Answer"];
+
+    sublist.add(SubgameList(cid: cid, Question: Question, Answer: Answer));
+    print(i);
+    print(sublist[i].cid);
+  }
+
+  return sublist;
+}
+
+class SubgameList {
+  String cid;
+  String Question;
+  String Answer;
+
+  SubgameList({this.cid, this.Question, this.Answer});
+}
+
+List<SubgameList> sublist = [SubgameList()];
+
+//
