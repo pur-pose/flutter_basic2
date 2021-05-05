@@ -7,7 +7,7 @@ import 'package:flutter_basic/tab_page.dart';
 import 'package:flutter_basic/test.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
+import 'package:get/get.dart';
 void main() async{
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Appbar',
       theme: ThemeData(fontFamily: 'BM-HANNA'),
       home: LoginPage(),

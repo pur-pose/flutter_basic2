@@ -59,7 +59,7 @@ flutter:
   fonts :
     - family: BM-HANNA
       fonts :
-        - asset: font/BM-HANNA.ttf
+        - asset: font/잘풀리는하루 Medium.ttf
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
