@@ -65,22 +65,28 @@ class MyPage extends StatelessWidget {
                 }
               },
             ),
-            RaisedButton(
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                onSurface: Color(0xffFF5E5E5E),
+                primary: Color(0xffFF5E5E5E),
+              ),
               child: Text('  게임시작  ',
-                          style: TextStyle(fontWeight: FontWeight.bold),),
+                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),),
               onPressed: (){
                 Navigator.push(context,
                     MaterialPageRoute<void>(builder: (BuildContext context)
                 {return TabPage();}),
                 );
               },
-              textColor: Colors.white,
-              color: Color(0xffFF5E5E5E),
 
             ),
-            RaisedButton(
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                onSurface: Color(0xffFFE0E0E0),
+                primary: Color(0xffFFE0E0E0),
+              ),
               child: Text('  로그아웃  ',
-                style: TextStyle(fontWeight: FontWeight.bold),),
+                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),),
                 onPressed: (){
                 FirebaseAuth.instance.signOut();
                 _googleSignIn.signOut();
@@ -90,8 +96,6 @@ class MyPage extends StatelessWidget {
                   {return LoginPage();}),
                 );
                 },
-              textColor: Colors.black,
-              color: Color(0xffFFE0E0E0),
 
             ),
 

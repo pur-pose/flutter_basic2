@@ -29,16 +29,31 @@ class LoginPage extends StatelessWidget {
             Image.asset('images/logo.jpg', width: 500, height: 200,),
             Image.asset('images/dancing.jpg', width: 300, height: 140,),
             Padding(padding: EdgeInsets.all(20.0)),
-            SignInButton(
-              Buttons.Google,
-              onPressed: () {
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  onSurface: Color(0xffFFFF9090),
+                  primary: Color(0xffFFFF9090),
+                ),
+                child: Text('   Login   ',
+                  style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold, color: Colors.white),),
+                  onPressed: () {
+                    _handleSignIn().then((user) {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(
+                              builder: (context) => MyPage(user)));
+                      print(user); });},
+                      )
+
+                      /*SignInButton(
+                Buttons.Google,
+                onPressed: () {
                 _handleSignIn().then((user) {
                   Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => MyPage(user)));
                   print(user);
                 });
               },
-            )
+            )*/
           ],
           )
       ),

@@ -81,17 +81,17 @@ class _four_pageState extends State<four_page> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children:<Widget> [
-                        Padding(padding: EdgeInsets.all(20.0)),
+                        Padding(padding: EdgeInsets.all(20.0)), //상단 여백 설정//
                         Container(
                          decoration: BoxDecoration(
-                           color: Colors.white,
-                           borderRadius: BorderRadius.all(Radius.circular(10.0))
+                           borderRadius: BorderRadius.all(Radius.circular(10.0)), //모서리 둥글게//
+                           boxShadow: ([BoxShadow(color: Colors.white, blurRadius: 1.0)])
                          ),
-                         height: 280, width: 380,
+                         height: 280, width: 380, //문제 박스 크기//
                          padding: EdgeInsets.only(left: 20, top:20, bottom: 20, right: 20),
                          child: Text(
-                           sublist[0].Question,
-                           style: TextStyle( fontSize: 18, fontWeight: FontWeight.bold, height: 3.5),
+                           sublist[0].Question, //파이어스토어 0번째 퀘스쳔 데이터 끌고오기//
+                           style: TextStyle( fontSize: 20, fontWeight: FontWeight.bold, height: 3.5),
                            textAlign: TextAlign.center,
                        ),
                        ),
@@ -104,27 +104,31 @@ class _four_pageState extends State<four_page> {
                              style: ElevatedButton.styleFrom(
                                onSurface: Color(0xffFFFF9090),
                                shape: StadiumBorder(),
-
+                               primary: Color(0xffFFFF9090),
                              ),
 
+
                              child: Text(sublist[0].Answer,
-                             style: TextStyle( fontSize: 16, fontWeight: FontWeight.bold, height: 1,
+                             style: TextStyle( fontSize: 15, fontWeight: FontWeight.bold, height: 1,
                              color: Colors.white),
                              textAlign: TextAlign.center,
                            ),
-                           onPressed: (){Get.off(two_game());}),
+                           onPressed: (){Get.off(two_game());} //다음 문제 페이지 이동//
+                           ),
                         /*2번째*/
                            ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               onSurface: Color(0xffFFFF9090),
                               shape: StadiumBorder(),
+                              primary: Color(0xffFFFF9090), //버튼 색상 설정//
                             ),
                             child: Text(sublist[5].Answer,
-                              style: TextStyle( fontSize: 16, fontWeight: FontWeight.bold, height: 1,
+                              style: TextStyle( fontSize: 17, fontWeight: FontWeight.bold, height: 1,
                                   color: Colors.white),
-                              textAlign: TextAlign.center,
+                                  textAlign: TextAlign.center,
                             ),
-                            onPressed: (){}),
+                               onPressed: (){Get.off(two_game());} //다음 문제 페이지 이동//
+                            ),
 
                         /*3번째*/
 
@@ -132,26 +136,30 @@ class _four_pageState extends State<four_page> {
                             style: ElevatedButton.styleFrom(
                               onSurface: Color(0xffFFFF9090),
                               shape: StadiumBorder(),
+                              primary: Color(0xffFFFF9090),
                             ),
                             child: Text(sublist[4].Answer,
                               style: TextStyle( fontSize: 16, fontWeight: FontWeight.bold, height: 1,
                                   color: Colors.white),
                               textAlign: TextAlign.center,
                             ),
-                            onPressed: (){}),
+                               onPressed: (){Get.off(two_game());} //다음 문제 페이지 이동//
+                            ),
 
                         /*4번째*/
                            ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               onSurface: Color(0xffFFFF9090),
                               shape: StadiumBorder(),
+                              primary: Color(0xffFFFF9090),
                             ),
                             child: Text(sublist[3].Answer,
                               style: TextStyle( fontSize: 16, fontWeight: FontWeight.bold, height: 1,
                                   color: Colors.white),
                               textAlign: TextAlign.center,
                             ),
-                            onPressed: (){}),
+                               onPressed: (){Get.off(two_game());} //다음 문제 페이지 이동//
+                            ),
 
 
 
@@ -201,6 +209,8 @@ class _two_gameState extends State<two_game> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children:<Widget> [
                           Padding(padding: EdgeInsets.all(20.0)),
+
+                          /*보기 가져오기*/
                           Container(
                             decoration: BoxDecoration(
                                 color: Colors.white,
@@ -210,12 +220,11 @@ class _two_gameState extends State<two_game> {
                             padding: EdgeInsets.only(left: 20, top:20, bottom: 20, right: 20),
                             child: Text(
                               sublist[3].Question,
-                              style: TextStyle( fontSize: 18, fontWeight: FontWeight.bold, height: 3.5),
+                              style: TextStyle( fontSize: 20, fontWeight: FontWeight.bold, height: 3),
                               textAlign: TextAlign.center,
                             ),
                           ),
 
-                          /*보기 가져오기*/
 
                           /*1번째*/
                           Padding(padding: EdgeInsets.all(10.0)),
@@ -223,11 +232,12 @@ class _two_gameState extends State<two_game> {
                               style: ElevatedButton.styleFrom(
                                 onSurface: Color(0xffFFFF9090),
                                 shape: StadiumBorder(),
+                                primary: Color(0xffFFFF9090),
 
                               ),
 
-                              child: Text(sublist[0].Answer,
-                                style: TextStyle( fontSize: 16, fontWeight: FontWeight.bold, height: 1,
+                              child: Text(sublist[11].Answer,
+                                style: TextStyle( fontSize: 15, fontWeight: FontWeight.bold, height: 1,
                                     color: Colors.white),
                                 textAlign: TextAlign.center,
                               ),
@@ -237,8 +247,9 @@ class _two_gameState extends State<two_game> {
                               style: ElevatedButton.styleFrom(
                                 onSurface: Color(0xffFFFF9090),
                                 shape: StadiumBorder(),
+                                primary: Color(0xffFFFF9090),
                               ),
-                              child: Text(sublist[5].Answer,
+                              child: Text(sublist[8].Answer,
                                 style: TextStyle( fontSize: 16, fontWeight: FontWeight.bold, height: 1,
                                     color: Colors.white),
                                 textAlign: TextAlign.center,
@@ -251,8 +262,9 @@ class _two_gameState extends State<two_game> {
                               style: ElevatedButton.styleFrom(
                                 onSurface: Color(0xffFFFF9090),
                                 shape: StadiumBorder(),
+                                primary: Color(0xffFFFF9090),
                               ),
-                              child: Text(sublist[4].Answer,
+                              child: Text(sublist[16].Answer,
                                 style: TextStyle( fontSize: 16, fontWeight: FontWeight.bold, height: 1,
                                     color: Colors.white),
                                 textAlign: TextAlign.center,
@@ -264,8 +276,9 @@ class _two_gameState extends State<two_game> {
                               style: ElevatedButton.styleFrom(
                                 onSurface: Color(0xffFFFF9090),
                                 shape: StadiumBorder(),
+                                primary: Color(0xffFFFF9090),
                               ),
-                              child: Text(sublist[3].Answer,
+                              child: Text(sublist[4].Answer,
                                 style: TextStyle( fontSize: 16, fontWeight: FontWeight.bold, height: 1,
                                     color: Colors.white),
                                 textAlign: TextAlign.center,

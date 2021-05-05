@@ -26,6 +26,7 @@ class _TabPageState extends State<TabPage> {
           appBar : AppBar(
             backgroundColor: Color(0xffFFFF9090),
             centerTitle: true,
+
           ),
           body:Center(
             child: Column(
@@ -55,20 +56,25 @@ class _TabPageState extends State<TabPage> {
                 ),
                 Image.asset('images/logo2.png',width: 600,height: 230,),
                 Padding(padding: EdgeInsets.only(top:50.0)),
-                RaisedButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    onSurface: Color(0xffFFFF9090),
+                    shape: StadiumBorder(),
+                    primary: Color(0xffFFFF9090),
                   ),
                   child: Text('   연도 선택   ',
-                    style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                    style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold, color: Colors.white),),
                   onPressed: (){
                     print('연도 선택');
                   },
-                  textColor: Colors.white,
-                  color: Color(0xffFFFF9090),
+
                 ),
                 Padding(padding: EdgeInsets.all(8.0)),
-                RaisedButton.icon(
+                ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      onSurface: Color(0xffFFE0E0E0),
+                      primary: Color(0xffFFE0E0E0),
+                    ),
                   onPressed: (){
                     Navigator.push(context,
                       MaterialPageRoute<void>(builder: (BuildContext context)
@@ -76,11 +82,15 @@ class _TabPageState extends State<TabPage> {
                     );
                   },
                   label: Text("   2017", style: TextStyle(
-                      fontSize: 30, fontWeight: FontWeight.bold),),
-                  icon: Icon(Icons.music_note,),
+                      fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black),),
+                  icon: Icon(Icons.music_note,color: Colors.black),
                 ),
                 Padding(padding: EdgeInsets.all(0.0)),
-                RaisedButton.icon(
+                ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    onSurface: Color(0xffFFE0E0E0),
+                    primary: Color(0xffFFE0E0E0),
+                  ),
                   onPressed: (){
                     Navigator.push(context,
                       MaterialPageRoute<void>(builder: (BuildContext context)
@@ -88,12 +98,16 @@ class _TabPageState extends State<TabPage> {
                     );
                   },
                   label: Text("   2018", style: TextStyle(
-                      fontSize: 30, fontWeight: FontWeight.bold),),
-                  icon: Icon(Icons.multitrack_audio,),
+                      fontSize: 30, fontWeight: FontWeight.bold,color: Colors.black),),
+                  icon: Icon(Icons.multitrack_audio,color: Colors.black),
                 ),
 
                 Padding(padding: EdgeInsets.all(0.0)),
-                RaisedButton.icon(
+                ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    onSurface: Color(0xffFFE0E0E0),
+                    primary: Color(0xffFFE0E0E0),
+                  ),
                   onPressed: (){
                     Navigator.push(context,
                       MaterialPageRoute<void>(builder: (BuildContext context)
@@ -101,11 +115,15 @@ class _TabPageState extends State<TabPage> {
                     );
                   },
                   label: Text("   2019", style: TextStyle(
-                      fontSize: 30, fontWeight: FontWeight.bold),),
-                  icon: Icon(Icons.mic,),
+                      fontSize: 30, fontWeight: FontWeight.bold,color: Colors.black),),
+                  icon: Icon(Icons.mic,color: Colors.black),
                 ),
                 Padding(padding: EdgeInsets.all(0.0)),
-                RaisedButton.icon(
+                ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    onSurface: Color(0xffFFE0E0E0),
+                    primary: Color(0xffFFE0E0E0),
+                  ),
                   onPressed: (){
                     Navigator.push(context,
                       MaterialPageRoute<void>(builder: (BuildContext context)
@@ -113,8 +131,8 @@ class _TabPageState extends State<TabPage> {
                     );
                   },
                   label: Text("   2020", style: TextStyle(
-                      fontSize: 30, fontWeight: FontWeight.bold),),
-                  icon: Icon(Icons.play_circle_outline,),
+                      fontSize: 30, fontWeight: FontWeight.bold,color: Colors.black),),
+                  icon: Icon(Icons.play_circle_outline,color: Colors.black),
                 ),
 
 
