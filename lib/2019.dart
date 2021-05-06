@@ -69,7 +69,7 @@ class _three_pageState extends State<three_page> {
                                 borderRadius: BorderRadius.all(Radius.circular(10.0)), //모서리 둥글게//
                                 boxShadow: ([BoxShadow(color: Colors.white, blurRadius: 1.0)])
                             ),
-                            /* Center(child: CircularProgressIndicator()),로딩*/창
+                            /* Center(child: CircularProgressIndicator()),로딩창*/
                             height: 280, width: 380, //문제 박스 크기//
                             padding: EdgeInsets.only(left: 20, top:20, bottom: 20, right: 20),
                             child: Text(
