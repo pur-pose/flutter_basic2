@@ -2,9 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_basic/main.dart';
 import 'package:flutter_basic/tab_page.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
 
 void main() async {
@@ -30,13 +28,13 @@ class four_page extends StatefulWidget {
 }*/
 
 int count = 0;
-int score = 0;
+int score = 1;
 
 //파이어스토어 DB연동//
 Future musicList() async {
   if (count == 0) {
     sublist.clear();
-    score = 0;
+    score = 1;
     QuerySnapshot querySnapshot =
         await FirebaseFirestore.instance.collection("2020").limit(20).get();
 
@@ -77,15 +75,16 @@ class _four_pageState extends State<four_page> {
           if (!snapshot.hasData) {
             return Center(child : CircularProgressIndicator());
           }*/
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
+    return WillPopScope(
+        child: Scaffold(
+        appBar: AppBar(
+          title: Text(
           '둠칫! 둠칫!',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Color(0xffFFFF9090),
-        centerTitle: true,
-      ),
+          backgroundColor: Color(0xffFFFF9090),
+          centerTitle: true,
+        ),
 
       /*문제 끌어오기*/
       body: Center(
@@ -95,10 +94,10 @@ class _four_pageState extends State<four_page> {
                 if (snapshot.hasData) {
                   return Container(
                       child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(padding: EdgeInsets.all(20.0)), //상단 여백 설정//
-                      Container(
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children: <Widget>[
+                        Padding(padding: EdgeInsets.all(20.0)), //상단 여백 설정//
+                        Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(
                                 Radius.circular(10.0)), //모서리 둥글게//
@@ -106,7 +105,7 @@ class _four_pageState extends State<four_page> {
                               BoxShadow(color: Colors.white, blurRadius: 1.0)
                             ])),
                         height: 280,
-                        width: 380,
+                        width: MediaQuery.of(context).size.width-20,
                         //문제 박스 크기//
                         padding: EdgeInsets.only(
                             left: 20, top: 20, bottom: 20, right: 20),
@@ -132,7 +131,7 @@ class _four_pageState extends State<four_page> {
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[0].Answer,
+                            sublist[5].Answer,
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -149,12 +148,13 @@ class _four_pageState extends State<four_page> {
                       /*2번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090), //버튼 색상 설정//
                           ),
                           child: Text(
-                            sublist[5].Answer,
+                            sublist[7].Answer,
                             style: TextStyle(
                                 fontSize: 17,
                                 fontWeight: FontWeight.bold,
@@ -171,12 +171,13 @@ class _four_pageState extends State<four_page> {
 
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[4].Answer,
+                            sublist[9].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -192,12 +193,13 @@ class _four_pageState extends State<four_page> {
                       /*4번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[3].Answer,
+                            sublist[0].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -219,6 +221,7 @@ class _four_pageState extends State<four_page> {
                 }
               })),
       backgroundColor: Color(0xfff7eded),
+    )
     );
   }
 }
@@ -251,8 +254,8 @@ class _two_gameState extends State<two_game> {
                   if (snapshot.hasData != null) {
                     return Container(
                         child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                         children: <Widget>[
                         Padding(padding: EdgeInsets.all(20.0)),
 
                         /*보기 가져오기*/
@@ -262,7 +265,7 @@ class _two_gameState extends State<two_game> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10.0))),
                           height: 280,
-                          width: 380,
+                          width: MediaQuery.of(context).size.width-20,
                           padding: EdgeInsets.only(
                               left: 20, top: 20, bottom: 20, right: 20),
                           child: Text(
@@ -279,14 +282,15 @@ class _two_gameState extends State<two_game> {
                         Padding(padding: EdgeInsets.all(10.0)),
                         ElevatedButton(
                             style: ElevatedButton.styleFrom(
+                              minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                               onSurface: Color(0xffFFFF9090),
                               shape: StadiumBorder(),
                               primary: Color(0xffFFFF9090),
                             ),
                             child: Text(
-                              sublist[11].Answer,
+                              sublist[2].Answer,
                               style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                   height: 1,
                                   color: Colors.white),
@@ -298,6 +302,7 @@ class _two_gameState extends State<two_game> {
                         /*2번째*/
                         ElevatedButton(
                             style: ElevatedButton.styleFrom(
+                              minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                               onSurface: Color(0xffFFFF9090),
                               shape: StadiumBorder(),
                               primary: Color(0xffFFFF9090),
@@ -318,6 +323,7 @@ class _two_gameState extends State<two_game> {
                         /*3번째*/
                         ElevatedButton(
                             style: ElevatedButton.styleFrom(
+                              minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                               onSurface: Color(0xffFFFF9090),
                               shape: StadiumBorder(),
                               primary: Color(0xffFFFF9090),
@@ -340,12 +346,13 @@ class _two_gameState extends State<two_game> {
                         /*4번째*/
                         ElevatedButton(
                             style: ElevatedButton.styleFrom(
+                              minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                               onSurface: Color(0xffFFFF9090),
                               shape: StadiumBorder(),
                               primary: Color(0xffFFFF9090),
                             ),
                             child: Text(
-                              sublist[4].Answer,
+                              sublist[10].Answer,
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -399,8 +406,8 @@ class _three_gameState extends State<three_game> {
                 if (snapshot.hasData != null) {
                   return Container(
                       child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                       children: <Widget>[
                       Padding(padding: EdgeInsets.all(20.0)),
 
                       /*보기 가져오기*/
@@ -410,7 +417,7 @@ class _three_gameState extends State<three_game> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         height: 280,
-                        width: 380,
+                        width: MediaQuery.of(context).size.width-20,
                         padding: EdgeInsets.only(
                             left: 20, top: 20, bottom: 20, right: 20),
                         child: Text(
@@ -427,12 +434,13 @@ class _three_gameState extends State<three_game> {
                       Padding(padding: EdgeInsets.all(10.0)),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[11].Answer,
+                            sublist[2].Answer,
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -441,32 +449,14 @@ class _three_gameState extends State<three_game> {
                             textAlign: TextAlign.center,
                           ),
                           onPressed: () {
+                            score++;
+                            print (score);
                             Get.off(four_game());
                           }),
                       /*2번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            onSurface: Color(0xffFFFF9090),
-                            shape: StadiumBorder(),
-                            primary: Color(0xffFFFF9090),
-                          ),
-                          child: Text(
-                            sublist[8].Answer,
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                height: 1,
-                                color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ),
-                          onPressed: () {
-                            Get.off(four_game());
-                          }),
-
-                      /*3번째*/
-
-                      ElevatedButton(
-                          style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
@@ -484,15 +474,38 @@ class _three_gameState extends State<three_game> {
                             Get.off(four_game());
                           }),
 
-                      /*4번째*/
+                      /*3번째*/
+
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[4].Answer,
+                            sublist[7].Answer,
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                height: 1,
+                                color: Colors.white),
+                            textAlign: TextAlign.center,
+                          ),
+                          onPressed: () {
+                            Get.off(four_game());
+                          }),
+
+                      /*4번째*/
+                      ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
+                            onSurface: Color(0xffFFFF9090),
+                            shape: StadiumBorder(),
+                            primary: Color(0xffFFFF9090),
+                          ),
+                          child: Text(
+                            sublist[9].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -540,8 +553,8 @@ class _four_gameState extends State<four_game> {
                 if (snapshot.hasData != null) {
                   return Container(
                       child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
                       Padding(padding: EdgeInsets.all(20.0)),
 
                       /*보기 가져오기*/
@@ -551,7 +564,7 @@ class _four_gameState extends State<four_game> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         height: 280,
-                        width: 380,
+                        width: MediaQuery.of(context).size.width-20,
                         padding: EdgeInsets.only(
                             left: 20, top: 20, bottom: 20, right: 20),
                         child: Text(
@@ -568,12 +581,13 @@ class _four_gameState extends State<four_game> {
                       Padding(padding: EdgeInsets.all(10.0)),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[11].Answer,
+                            sublist[14].Answer,
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -587,12 +601,13 @@ class _four_gameState extends State<four_game> {
                       /*2번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[8].Answer,
+                            sublist[3].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -601,6 +616,8 @@ class _four_gameState extends State<four_game> {
                             textAlign: TextAlign.center,
                           ),
                           onPressed: () {
+                            score++;
+                            print (score);
                             Get.off(five_gmae());
                           }),
 
@@ -608,12 +625,13 @@ class _four_gameState extends State<four_game> {
 
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[16].Answer,
+                            sublist[19].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -628,12 +646,13 @@ class _four_gameState extends State<four_game> {
                       /*4번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[4].Answer,
+                            sublist[13].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -681,8 +700,8 @@ class _five_gmaeState extends State<five_gmae> {
                 if (snapshot.hasData != null) {
                   return Container(
                       child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
                       Padding(padding: EdgeInsets.all(20.0)),
 
                       /*보기 가져오기*/
@@ -692,7 +711,7 @@ class _five_gmaeState extends State<five_gmae> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         height: 280,
-                        width: 380,
+                        width: MediaQuery.of(context).size.width-20,
                         padding: EdgeInsets.only(
                             left: 20, top: 20, bottom: 20, right: 20),
                         child: Text(
@@ -709,12 +728,13 @@ class _five_gmaeState extends State<five_gmae> {
                       Padding(padding: EdgeInsets.all(10.0)),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[11].Answer,
+                            sublist[0].Answer,
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -728,12 +748,13 @@ class _five_gmaeState extends State<five_gmae> {
                       /*2번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[8].Answer,
+                            sublist[4].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -742,6 +763,8 @@ class _five_gmaeState extends State<five_gmae> {
                             textAlign: TextAlign.center,
                           ),
                           onPressed: () {
+                            score++;
+                            print (score);
                             Get.off(six_game());
                           }),
 
@@ -749,12 +772,13 @@ class _five_gmaeState extends State<five_gmae> {
 
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[16].Answer,
+                            sublist[17].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -769,12 +793,13 @@ class _five_gmaeState extends State<five_gmae> {
                       /*4번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[4].Answer,
+                            sublist[11].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -822,8 +847,8 @@ class _six_gameState extends State<six_game> {
                 if (snapshot.hasData != null) {
                   return Container(
                       child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
                       Padding(padding: EdgeInsets.all(20.0)),
 
                       /*보기 가져오기*/
@@ -833,7 +858,7 @@ class _six_gameState extends State<six_game> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         height: 280,
-                        width: 380,
+                        width: MediaQuery.of(context).size.width-20,
                         padding: EdgeInsets.only(
                             left: 20, top: 20, bottom: 20, right: 20),
                         child: Text(
@@ -850,12 +875,13 @@ class _six_gameState extends State<six_game> {
                       Padding(padding: EdgeInsets.all(10.0)),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[11].Answer,
+                            sublist[4].Answer,
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -869,12 +895,13 @@ class _six_gameState extends State<six_game> {
                       /*2번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[8].Answer,
+                            sublist[5].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -883,6 +910,8 @@ class _six_gameState extends State<six_game> {
                             textAlign: TextAlign.center,
                           ),
                           onPressed: () {
+                            score++;
+                            print (score);
                             Get.off(seven_game());
                           }),
 
@@ -890,12 +919,13 @@ class _six_gameState extends State<six_game> {
 
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[16].Answer,
+                            sublist[17].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -910,12 +940,13 @@ class _six_gameState extends State<six_game> {
                       /*4번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[4].Answer,
+                            sublist[16].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -963,8 +994,8 @@ class _seven_gameState extends State<seven_game> {
                 if (snapshot.hasData != null) {
                   return Container(
                       child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
                       Padding(padding: EdgeInsets.all(20.0)),
 
                       /*보기 가져오기*/
@@ -974,7 +1005,7 @@ class _seven_gameState extends State<seven_game> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         height: 280,
-                        width: 380,
+                        width: MediaQuery.of(context).size.width-20,
                         padding: EdgeInsets.only(
                             left: 20, top: 20, bottom: 20, right: 20),
                         child: Text(
@@ -991,12 +1022,13 @@ class _seven_gameState extends State<seven_game> {
                       Padding(padding: EdgeInsets.all(10.0)),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[11].Answer,
+                            sublist[1].Answer,
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -1010,12 +1042,13 @@ class _seven_gameState extends State<seven_game> {
                       /*2번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[8].Answer,
+                            sublist[11].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -1031,12 +1064,13 @@ class _seven_gameState extends State<seven_game> {
 
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[16].Answer,
+                            sublist[6].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -1045,18 +1079,21 @@ class _seven_gameState extends State<seven_game> {
                             textAlign: TextAlign.center,
                           ),
                           onPressed: () {
+                            score++;
+                            print (score);
                             Get.off(eight_game());
                           }),
 
                       /*4번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[4].Answer,
+                            sublist[13].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -1115,7 +1152,7 @@ class _eight_gameState extends State<eight_game> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         height: 280,
-                        width: 380,
+                        width: MediaQuery.of(context).size.width-20,
                         padding: EdgeInsets.only(
                             left: 20, top: 20, bottom: 20, right: 20),
                         child: Text(
@@ -1132,12 +1169,13 @@ class _eight_gameState extends State<eight_game> {
                       Padding(padding: EdgeInsets.all(10.0)),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[11].Answer,
+                            sublist[2].Answer,
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -1151,12 +1189,13 @@ class _eight_gameState extends State<eight_game> {
                       /*2번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[8].Answer,
+                            sublist[4].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -1172,12 +1211,13 @@ class _eight_gameState extends State<eight_game> {
 
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[16].Answer,
+                            sublist[15].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -1192,12 +1232,13 @@ class _eight_gameState extends State<eight_game> {
                       /*4번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[4].Answer,
+                            sublist[7].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -1206,6 +1247,8 @@ class _eight_gameState extends State<eight_game> {
                             textAlign: TextAlign.center,
                           ),
                           onPressed: () {
+                            score++;
+                            print (score);
                             Get.off(nine_game());
                           }),
                     ],
@@ -1245,9 +1288,9 @@ class _nine_gameState extends State<nine_game> {
                 if (snapshot.hasData != null) {
                   return Container(
                       child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(padding: EdgeInsets.all(20.0)),
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children: <Widget>[
+                        Padding(padding: EdgeInsets.all(20.0)),
 
                       /*보기 가져오기*/
                       Container(
@@ -1256,7 +1299,7 @@ class _nine_gameState extends State<nine_game> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         height: 280,
-                        width: 380,
+                        width: MediaQuery.of(context).size.width-20,
                         padding: EdgeInsets.only(
                             left: 20, top: 20, bottom: 20, right: 20),
                         child: Text(
@@ -1273,12 +1316,13 @@ class _nine_gameState extends State<nine_game> {
                       Padding(padding: EdgeInsets.all(10.0)),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[11].Answer,
+                            sublist[1].Answer,
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -1292,6 +1336,7 @@ class _nine_gameState extends State<nine_game> {
                       /*2번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
@@ -1306,19 +1351,21 @@ class _nine_gameState extends State<nine_game> {
                             textAlign: TextAlign.center,
                           ),
                           onPressed: () {
+                            score++;
+                            print (score);
                             Get.off(ten_game());
                           }),
 
                       /*3번째*/
-
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[16].Answer,
+                            sublist[18].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -1333,12 +1380,13 @@ class _nine_gameState extends State<nine_game> {
                       /*4번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[4].Answer,
+                            sublist[6].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -1386,9 +1434,9 @@ class _ten_gameState extends State<ten_game> {
                 if (snapshot.hasData != null) {
                   return Container(
                       child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(padding: EdgeInsets.all(20.0)),
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children: <Widget>[
+                        Padding(padding: EdgeInsets.all(20.0)),
 
                       /*보기 가져오기*/
                       Container(
@@ -1397,7 +1445,7 @@ class _ten_gameState extends State<ten_game> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         height: 280,
-                        width: 380,
+                        width: MediaQuery.of(context).size.width-20,
                         padding: EdgeInsets.only(
                             left: 20, top: 20, bottom: 20, right: 20),
                         child: Text(
@@ -1414,12 +1462,13 @@ class _ten_gameState extends State<ten_game> {
                       Padding(padding: EdgeInsets.all(10.0)),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[11].Answer,
+                            sublist[3].Answer,
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -1433,12 +1482,13 @@ class _ten_gameState extends State<ten_game> {
                       /*2번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[8].Answer,
+                            sublist[1].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -1454,12 +1504,13 @@ class _ten_gameState extends State<ten_game> {
 
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[16].Answer,
+                            sublist[19].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -1474,12 +1525,13 @@ class _ten_gameState extends State<ten_game> {
                       /*4번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[4].Answer,
+                            sublist[9].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -1488,6 +1540,8 @@ class _ten_gameState extends State<ten_game> {
                             textAlign: TextAlign.center,
                           ),
                           onPressed: () {
+                            score++;
+                            print (score);
                             Get.off(eleven_game());
                           }),
                     ],
@@ -1538,7 +1592,7 @@ class _eleven_gameState extends State<eleven_game> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         height: 280,
-                        width: 380,
+                        width: MediaQuery.of(context).size.width-20,
                         padding: EdgeInsets.only(
                             left: 20, top: 20, bottom: 20, right: 20),
                         child: Text(
@@ -1555,12 +1609,13 @@ class _eleven_gameState extends State<eleven_game> {
                       Padding(padding: EdgeInsets.all(10.0)),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[11].Answer,
+                            sublist[10].Answer,
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -1569,17 +1624,20 @@ class _eleven_gameState extends State<eleven_game> {
                             textAlign: TextAlign.center,
                           ),
                           onPressed: () {
+                            score++;
+                            print (score);
                             Get.off(twelve_game());
                           }),
                       /*2번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[8].Answer,
+                            sublist[0].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -1595,6 +1653,7 @@ class _eleven_gameState extends State<eleven_game> {
 
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
@@ -1615,12 +1674,13 @@ class _eleven_gameState extends State<eleven_game> {
                       /*4번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[4].Answer,
+                            sublist[13].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -1679,7 +1739,7 @@ class _twelve_gameState extends State<twelve_game> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         height: 280,
-                        width: 380,
+                        width: MediaQuery.of(context).size.width-20,
                         padding: EdgeInsets.only(
                             left: 20, top: 20, bottom: 20, right: 20),
                         child: Text(
@@ -1696,6 +1756,7 @@ class _twelve_gameState extends State<twelve_game> {
                       Padding(padding: EdgeInsets.all(10.0)),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
@@ -1710,17 +1771,20 @@ class _twelve_gameState extends State<twelve_game> {
                             textAlign: TextAlign.center,
                           ),
                           onPressed: () {
+                            score++;
+                            print (score);
                             Get.off(thirteen_game());
                           }),
                       /*2번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[8].Answer,
+                            sublist[7].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -1736,12 +1800,13 @@ class _twelve_gameState extends State<twelve_game> {
 
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[16].Answer,
+                            sublist[13].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -1756,12 +1821,13 @@ class _twelve_gameState extends State<twelve_game> {
                       /*4번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[4].Answer,
+                            sublist[3].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -1820,7 +1886,7 @@ class _thirteen_gameState extends State<thirteen_game> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         height: 280,
-                        width: 380,
+                        width: MediaQuery.of(context).size.width-20,
                         padding: EdgeInsets.only(
                             left: 20, top: 20, bottom: 20, right: 20),
                         child: Text(
@@ -1837,12 +1903,13 @@ class _thirteen_gameState extends State<thirteen_game> {
                       Padding(padding: EdgeInsets.all(10.0)),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[11].Answer,
+                            sublist[0].Answer,
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -1856,12 +1923,13 @@ class _thirteen_gameState extends State<thirteen_game> {
                       /*2번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[8].Answer,
+                            sublist[12].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -1870,6 +1938,8 @@ class _thirteen_gameState extends State<thirteen_game> {
                             textAlign: TextAlign.center,
                           ),
                           onPressed: () {
+                            score++;
+                            print (score);
                             Get.off(fourteen_game());
                           }),
 
@@ -1877,12 +1947,13 @@ class _thirteen_gameState extends State<thirteen_game> {
 
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[16].Answer,
+                            sublist[17].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -1897,6 +1968,7 @@ class _thirteen_gameState extends State<thirteen_game> {
                       /*4번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
@@ -1961,7 +2033,7 @@ class _fourteen_gameState extends State<fourteen_game> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         height: 280,
-                        width: 380,
+                        width: MediaQuery.of(context).size.width-20,
                         padding: EdgeInsets.only(
                             left: 20, top: 20, bottom: 20, right: 20),
                         child: Text(
@@ -1978,12 +2050,13 @@ class _fourteen_gameState extends State<fourteen_game> {
                       Padding(padding: EdgeInsets.all(10.0)),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[11].Answer,
+                            sublist[5].Answer,
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -1997,12 +2070,13 @@ class _fourteen_gameState extends State<fourteen_game> {
                       /*2번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[8].Answer,
+                            sublist[13].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -2011,6 +2085,8 @@ class _fourteen_gameState extends State<fourteen_game> {
                             textAlign: TextAlign.center,
                           ),
                           onPressed: () {
+                            score++;
+                            print (score);
                             Get.off(fifteen_game());
                           }),
 
@@ -2018,12 +2094,13 @@ class _fourteen_gameState extends State<fourteen_game> {
 
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[16].Answer,
+                            sublist[15].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -2038,12 +2115,13 @@ class _fourteen_gameState extends State<fourteen_game> {
                       /*4번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[4].Answer,
+                            sublist[18].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -2102,7 +2180,7 @@ class _fifteen_gameState extends State<fifteen_game> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         height: 280,
-                        width: 380,
+                        width: MediaQuery.of(context).size.width-20,
                         padding: EdgeInsets.only(
                             left: 20, top: 20, bottom: 20, right: 20),
                         child: Text(
@@ -2119,12 +2197,13 @@ class _fifteen_gameState extends State<fifteen_game> {
                       Padding(padding: EdgeInsets.all(10.0)),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[11].Answer,
+                            sublist[1].Answer,
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -2138,12 +2217,13 @@ class _fifteen_gameState extends State<fifteen_game> {
                       /*2번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[8].Answer,
+                            sublist[10].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -2159,12 +2239,13 @@ class _fifteen_gameState extends State<fifteen_game> {
 
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[16].Answer,
+                            sublist[14].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -2173,17 +2254,20 @@ class _fifteen_gameState extends State<fifteen_game> {
                             textAlign: TextAlign.center,
                           ),
                           onPressed: () {
+                            score++;
+                            print (score);
                             Get.off(sixteen_game());
                           }),
                       /*4번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[4].Answer,
+                            sublist[6].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -2242,7 +2326,7 @@ class _sixteen_gameState extends State<sixteen_game> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         height: 280,
-                        width: 380,
+                        width: MediaQuery.of(context).size.width-20,
                         padding: EdgeInsets.only(
                             left: 20, top: 20, bottom: 20, right: 20),
                         child: Text(
@@ -2259,12 +2343,13 @@ class _sixteen_gameState extends State<sixteen_game> {
                       Padding(padding: EdgeInsets.all(10.0)),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[11].Answer,
+                            sublist[4].Answer,
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -2278,12 +2363,13 @@ class _sixteen_gameState extends State<sixteen_game> {
                       /*2번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[8].Answer,
+                            sublist[5].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -2299,12 +2385,13 @@ class _sixteen_gameState extends State<sixteen_game> {
 
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[16].Answer,
+                            sublist[15].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -2313,18 +2400,21 @@ class _sixteen_gameState extends State<sixteen_game> {
                             textAlign: TextAlign.center,
                           ),
                           onPressed: () {
+                            score++;
+                            print (score);
                             Get.off(seventeen_game());
                           }),
 
                       /*4번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[4].Answer,
+                            sublist[19].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -2383,7 +2473,7 @@ class _seventeen_gameState extends State<seventeen_game> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         height: 280,
-                        width: 380,
+                        width: MediaQuery.of(context).size.width-20,
                         padding: EdgeInsets.only(
                             left: 20, top: 20, bottom: 20, right: 20),
                         child: Text(
@@ -2400,12 +2490,13 @@ class _seventeen_gameState extends State<seventeen_game> {
                       Padding(padding: EdgeInsets.all(10.0)),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[11].Answer,
+                            sublist[7].Answer,
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -2419,27 +2510,7 @@ class _seventeen_gameState extends State<seventeen_game> {
                       /*2번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            onSurface: Color(0xffFFFF9090),
-                            shape: StadiumBorder(),
-                            primary: Color(0xffFFFF9090),
-                          ),
-                          child: Text(
-                            sublist[8].Answer,
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                height: 1,
-                                color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ),
-                          onPressed: () {
-                            Get.off(eighteen_game());
-                          }),
-
-                      /*3번째*/
-
-                      ElevatedButton(
-                          style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
@@ -2454,18 +2525,43 @@ class _seventeen_gameState extends State<seventeen_game> {
                             textAlign: TextAlign.center,
                           ),
                           onPressed: () {
+                            score++;
+                            print (score);
+                            Get.off(eighteen_game());
+                          }),
+
+                      /*3번째*/
+
+                      ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
+                            onSurface: Color(0xffFFFF9090),
+                            shape: StadiumBorder(),
+                            primary: Color(0xffFFFF9090),
+                          ),
+                          child: Text(
+                            sublist[3].Answer,
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                height: 1,
+                                color: Colors.white),
+                            textAlign: TextAlign.center,
+                          ),
+                          onPressed: () {
                             Get.off(eighteen_game());
                           }),
 
                       /*4번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[4].Answer,
+                            sublist[11].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -2524,7 +2620,7 @@ class _eighteen_gameState extends State<eighteen_game> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         height: 280,
-                        width: 380,
+                        width: MediaQuery.of(context).size.width-20,
                         padding: EdgeInsets.only(
                             left: 20, top: 20, bottom: 20, right: 20),
                         child: Text(
@@ -2541,12 +2637,13 @@ class _eighteen_gameState extends State<eighteen_game> {
                       Padding(padding: EdgeInsets.all(10.0)),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[11].Answer,
+                            sublist[9].Answer,
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -2560,12 +2657,13 @@ class _eighteen_gameState extends State<eighteen_game> {
                       /*2번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[8].Answer,
+                            sublist[7].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -2581,12 +2679,13 @@ class _eighteen_gameState extends State<eighteen_game> {
 
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[16].Answer,
+                            sublist[17].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -2595,18 +2694,21 @@ class _eighteen_gameState extends State<eighteen_game> {
                             textAlign: TextAlign.center,
                           ),
                           onPressed: () {
+                            score++;
+                            print (score);
                             Get.off(nineteen_game());
                           }),
 
                       /*4번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[4].Answer,
+                            sublist[2].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -2665,7 +2767,7 @@ class _nineteen_gameState extends State<nineteen_game> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         height: 280,
-                        width: 380,
+                        width: MediaQuery.of(context).size.width-20,
                         padding: EdgeInsets.only(
                             left: 20, top: 20, bottom: 20, right: 20),
                         child: Text(
@@ -2682,12 +2784,13 @@ class _nineteen_gameState extends State<nineteen_game> {
                       Padding(padding: EdgeInsets.all(10.0)),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[11].Answer,
+                            sublist[18].Answer,
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -2696,17 +2799,20 @@ class _nineteen_gameState extends State<nineteen_game> {
                             textAlign: TextAlign.center,
                           ),
                           onPressed: () {
+                            score++;
+                            print (score);
                             Get.off(twenty_game());
                           }),
                       /*2번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[8].Answer,
+                            sublist[6].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -2722,12 +2828,13 @@ class _nineteen_gameState extends State<nineteen_game> {
 
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[16].Answer,
+                            sublist[12].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -2742,12 +2849,13 @@ class _nineteen_gameState extends State<nineteen_game> {
                       /*4번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
                           ),
                           child: Text(
-                            sublist[4].Answer,
+                            sublist[1].Answer,
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -2806,7 +2914,7 @@ class _twenty_gameState extends State<twenty_game> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
                         height: 280,
-                        width: 380,
+                        width: MediaQuery.of(context).size.width-20,
                         padding: EdgeInsets.only(
                             left: 20, top: 20, bottom: 20, right: 20),
                         child: Text(
@@ -2823,23 +2931,7 @@ class _twenty_gameState extends State<twenty_game> {
                       Padding(padding: EdgeInsets.all(10.0)),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            onSurface: Color(0xffFFFF9090),
-                            shape: StadiumBorder(),
-                            primary: Color(0xffFFFF9090),
-                          ),
-                          child: Text(
-                            sublist[11].Answer,
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                                height: 1,
-                                color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ),
-                          onPressed: () {}),
-                      /*2번째*/
-                      ElevatedButton(
-                          style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
@@ -2847,18 +2939,50 @@ class _twenty_gameState extends State<twenty_game> {
                           child: Text(
                             sublist[8].Answer,
                             style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 15,
                                 fontWeight: FontWeight.bold,
                                 height: 1,
                                 color: Colors.white),
                             textAlign: TextAlign.center,
                           ),
-                          onPressed: () {}),
-
-                      /*3번째*/
-
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                barrierDismissible: false,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                      title: Text('결과 공개'),
+                                      content: SingleChildScrollView(
+                                        child: ListBody(
+                                          children: <Widget>[
+                                            Text('점수 : $score / 20'),
+                                          ],
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        FlatButton(
+                                          child: Text('다시시작'),
+                                          onPressed: () {
+                                            sublist.clear();
+                                            count = 0;
+                                            Get.off(TabPage());
+                                          },
+                                        ),
+                                        FlatButton(
+                                          child: Text('종료'),
+                                          onPressed: () {
+                                            sublist.clear();
+                                            count = 0;
+                                            Navigator.of(context).pop();
+                                          },
+                                        )
+                                      ]);
+                                });
+                          }),
+                      /*2번째*/
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
@@ -2872,11 +2996,46 @@ class _twenty_gameState extends State<twenty_game> {
                                 color: Colors.white),
                             textAlign: TextAlign.center,
                           ),
-                          onPressed: () {}),
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                barrierDismissible: false,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                      title: Text('결과 공개'),
+                                      content: SingleChildScrollView(
+                                        child: ListBody(
+                                          children: <Widget>[
+                                            Text('점수 : $score / 20'),
+                                          ],
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        FlatButton(
+                                          child: Text('다시시작'),
+                                          onPressed: () {
+                                            sublist.clear();
+                                            count = 0;
+                                            Get.off(TabPage());
+                                          },
+                                        ),
+                                        FlatButton(
+                                          child: Text('종료'),
+                                          onPressed: () {
+                                            sublist.clear();
+                                            count = 0;
+                                            Navigator.of(context).pop();
+                                          },
+                                        )
+                                      ]);
+                                });
+                          }),
 
-                      /*4번째*/
+                      /*3번째*/
+
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
                             onSurface: Color(0xffFFFF9090),
                             shape: StadiumBorder(),
                             primary: Color(0xffFFFF9090),
@@ -2890,8 +3049,64 @@ class _twenty_gameState extends State<twenty_game> {
                                 color: Colors.white),
                             textAlign: TextAlign.center,
                           ),
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              barrierDismissible: false,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                    title: Text('결과 공개'),
+                                    content: SingleChildScrollView(
+                                      child: ListBody(
+                                        children: <Widget>[
+                                          Text('점수 : $score / 20'),
+                                        ],
+                                      ),
+                                    ),
+                                    actions: <Widget>[
+                                      FlatButton(
+                                        child: Text('다시시작'),
+                                        onPressed: () {
+                                          sublist.clear();
+                                          count = 0;
+                                          Get.off(TabPage());
+                                        },
+                                      ),
+                                      FlatButton(
+                                        child: Text('종료'),
+                                        onPressed: () {
+                                          sublist.clear();
+                                          count = 0;
+                                          Navigator.of(context).pop();
+                                        },
+                                      )
+                                    ]);
+                              });
+
+                          }),
+
+                      /*4번째*/
+                      ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: Size(MediaQuery.of(context).size.width-20,40),
+                            onSurface: Color(0xffFFFF9090),
+                            shape: StadiumBorder(),
+                            primary: Color(0xffFFFF9090),
+                          ),
+                          child: Text(
+                            sublist[19].Answer,
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                height: 1,
+                                color: Colors.white),
+                            textAlign: TextAlign.center,
+                          ),
                           //클릭시 결과공개 팝업창으로 넘어가게//
                           onPressed: () {
+                            score++;
+                            print (score);
+
                             showDialog(
                                 context: context,
                                 barrierDismissible: false,
@@ -2901,7 +3116,7 @@ class _twenty_gameState extends State<twenty_game> {
                                       content: SingleChildScrollView(
                                         child: ListBody(
                                           children: <Widget>[
-                                            Text('점수 : $score'),
+                                            Text('점수 : $score / 20'),
                                           ],
                                         ),
                                       ),

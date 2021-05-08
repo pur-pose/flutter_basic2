@@ -80,6 +80,7 @@ class _one_pageState extends State<one_page> {
                               style: TextStyle( fontSize: 20, fontWeight: FontWeight.bold, height: 3.5),
                               textAlign: TextAlign.center,
                             ),
+
                           ),
 
                           /*보기 가져오기*/

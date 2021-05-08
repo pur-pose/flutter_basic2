@@ -7,7 +7,6 @@ import 'package:flutter_basic/2019.dart';
 import 'package:flutter_basic/2020.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_basic/login_page.dart';
-import 'package:flutter_basic/main.dart';
 
 class TabPage extends StatefulWidget {
 
@@ -44,7 +43,7 @@ class _TabPageState extends State<TabPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-                              width : MediaQuery.of(context).size.width,
+                              width : MediaQuery.of(context).size.width-30,
                               child: Text("${snapshot.data.displayName}님",
                               textAlign: TextAlign.right,
                                 style: TextStyle(fontSize:18,fontWeight: FontWeight.bold, height: 1,

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_basic/2017.dart';
 import 'package:flutter_basic/login_page.dart';
 import 'package:flutter_basic/root_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_basic/tab_page.dart';
-import 'package:flutter_basic/test.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:get/get.dart';
