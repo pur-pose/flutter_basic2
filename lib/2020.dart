@@ -259,7 +259,7 @@ class _two_gameState extends State<two_game> {
                         Padding(padding: EdgeInsets.all(20.0)),
 
                         /*보기 가져오기*/
-                        Container(
+                          Container(
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius:
@@ -388,9 +388,10 @@ class three_game extends StatefulWidget {
 class _three_gameState extends State<three_game> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
+    return WillPopScope(
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(
           '둠칫! 둠칫!',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
@@ -400,7 +401,7 @@ class _three_gameState extends State<three_game> {
 
       /*문제 끌어오기*/
       body: Center(
-          child: FutureBuilder(
+           child: FutureBuilder(
               future: musicList(),
               builder: (context, snapshot) {
                 if (snapshot.hasData != null) {
@@ -408,10 +409,10 @@ class _three_gameState extends State<three_game> {
                       child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                        children: <Widget>[
-                      Padding(padding: EdgeInsets.all(20.0)),
+                          Padding(padding: EdgeInsets.all(20.0)),
 
                       /*보기 가져오기*/
-                      Container(
+                        Container(
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius:
@@ -522,6 +523,9 @@ class _three_gameState extends State<three_game> {
                 ;
               })),
       backgroundColor: Color(0xfff7eded),
+
+    ),
+      onWillPop: () {},
     );
   }
 }
@@ -535,9 +539,10 @@ class four_game extends StatefulWidget {
 class _four_gameState extends State<four_game> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
+    return WillPopScope(
+        child: Scaffold(
+        appBar: AppBar(
+          title: Text(
           '둠칫! 둠칫!',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
@@ -669,7 +674,8 @@ class _four_gameState extends State<four_game> {
                 ;
               })),
       backgroundColor: Color(0xfff7eded),
-    );
+    ),
+      onWillPop: () {},);
   }
 }
 
@@ -682,8 +688,9 @@ class five_gmae extends StatefulWidget {
 class _five_gmaeState extends State<five_gmae> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return WillPopScope(
+        child: Scaffold(
+        appBar: AppBar(
         title: Text(
           '둠칫! 둠칫!',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -816,7 +823,8 @@ class _five_gmaeState extends State<five_gmae> {
                 ;
               })),
       backgroundColor: Color(0xfff7eded),
-    );
+    ),
+      onWillPop: () {},);
   }
 }
 
@@ -829,9 +837,10 @@ class six_game extends StatefulWidget {
 class _six_gameState extends State<six_game> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
+    return WillPopScope(
+        child: Scaffold(
+         appBar: AppBar(
+         title: Text(
           '둠칫! 둠칫!',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
@@ -963,7 +972,8 @@ class _six_gameState extends State<six_game> {
                 ;
               })),
       backgroundColor: Color(0xfff7eded),
-    );
+    ),
+      onWillPop: () {},);
   }
 }
 
@@ -976,9 +986,10 @@ class seven_game extends StatefulWidget {
 class _seven_gameState extends State<seven_game> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
+    return WillPopScope(
+        child: Scaffold(
+        appBar: AppBar(
+         title: Text(
           '둠칫! 둠칫!',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
@@ -1110,7 +1121,8 @@ class _seven_gameState extends State<seven_game> {
                 ;
               })),
       backgroundColor: Color(0xfff7eded),
-    );
+    ),
+      onWillPop: () {},);
   }
 }
 
@@ -1123,9 +1135,10 @@ class eight_game extends StatefulWidget {
 class _eight_gameState extends State<eight_game> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
+    return WillPopScope(
+        child: Scaffold(
+         appBar: AppBar(
+         title: Text(
           '둠칫! 둠칫!',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
@@ -1257,6 +1270,8 @@ class _eight_gameState extends State<eight_game> {
                 ;
               })),
       backgroundColor: Color(0xfff7eded),
+    ),
+      onWillPop: () {},
     );
   }
 }
@@ -1270,9 +1285,10 @@ class nine_game extends StatefulWidget {
 class _nine_gameState extends State<nine_game> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
+    return WillPopScope(
+        child: Scaffold(
+          appBar: AppBar(
+          title: Text(
           '둠칫! 둠칫!',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
@@ -1403,7 +1419,8 @@ class _nine_gameState extends State<nine_game> {
                 ;
               })),
       backgroundColor: Color(0xfff7eded),
-    );
+    ),
+      onWillPop: () {},);
   }
 }
 
@@ -1416,9 +1433,10 @@ class ten_game extends StatefulWidget {
 class _ten_gameState extends State<ten_game> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
+    return WillPopScope(
+        child: Scaffold(
+          appBar: AppBar(
+           title: Text(
           '둠칫! 둠칫!',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
@@ -1550,7 +1568,8 @@ class _ten_gameState extends State<ten_game> {
                 ;
               })),
       backgroundColor: Color(0xfff7eded),
-    );
+    ),
+      onWillPop: () {},);
   }
 }
 
@@ -1563,9 +1582,10 @@ class eleven_game extends StatefulWidget {
 class _eleven_gameState extends State<eleven_game> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
+    return WillPopScope(
+        child: Scaffold(
+         appBar: AppBar(
+          title: Text(
           '둠칫! 둠칫!',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
@@ -1697,7 +1717,8 @@ class _eleven_gameState extends State<eleven_game> {
                 ;
               })),
       backgroundColor: Color(0xfff7eded),
-    );
+    ),
+      onWillPop: () {},);
   }
 }
 
@@ -1710,9 +1731,10 @@ class twelve_game extends StatefulWidget {
 class _twelve_gameState extends State<twelve_game> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
+    return WillPopScope(
+        child: Scaffold(
+         appBar: AppBar(
+          title: Text(
           '둠칫! 둠칫!',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
@@ -1844,7 +1866,8 @@ class _twelve_gameState extends State<twelve_game> {
                 ;
               })),
       backgroundColor: Color(0xfff7eded),
-    );
+    ),
+      onWillPop: () {},);
   }
 }
 
@@ -1857,9 +1880,10 @@ class thirteen_game extends StatefulWidget {
 class _thirteen_gameState extends State<thirteen_game> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
+    return WillPopScope(
+        child: Scaffold(
+         appBar: AppBar(
+          title: Text(
           '둠칫! 둠칫!',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
@@ -1991,7 +2015,8 @@ class _thirteen_gameState extends State<thirteen_game> {
                 ;
               })),
       backgroundColor: Color(0xfff7eded),
-    );
+    ),
+      onWillPop: () {},);
   }
 }
 
@@ -2004,8 +2029,9 @@ class fourteen_game extends StatefulWidget {
 class _fourteen_gameState extends State<fourteen_game> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return WillPopScope(
+        child: Scaffold(
+        appBar: AppBar(
         title: Text(
           '둠칫! 둠칫!',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -2091,7 +2117,6 @@ class _fourteen_gameState extends State<fourteen_game> {
                           }),
 
                       /*3번째*/
-
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             minimumSize: Size(MediaQuery.of(context).size.width-20,40),
@@ -2138,7 +2163,8 @@ class _fourteen_gameState extends State<fourteen_game> {
                 ;
               })),
       backgroundColor: Color(0xfff7eded),
-    );
+    ),
+      onWillPop: () {},);
   }
 }
 
@@ -2151,9 +2177,10 @@ class fifteen_game extends StatefulWidget {
 class _fifteen_gameState extends State<fifteen_game> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
+    return WillPopScope(
+        child: Scaffold(
+         appBar: AppBar(
+         title: Text(
           '둠칫! 둠칫!',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
@@ -2236,7 +2263,6 @@ class _fifteen_gameState extends State<fifteen_game> {
                           }),
 
                       /*3번째*/
-
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             minimumSize: Size(MediaQuery.of(context).size.width-20,40),
@@ -2284,6 +2310,8 @@ class _fifteen_gameState extends State<fifteen_game> {
                 ;
               })),
       backgroundColor: Color(0xfff7eded),
+    ),
+      onWillPop: () {},
     );
   }
 }
@@ -2297,10 +2325,11 @@ class sixteen_game extends StatefulWidget {
 class _sixteen_gameState extends State<sixteen_game> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          '둠칫! 둠칫!',
+    return WillPopScope(
+        child: Scaffold(
+         appBar: AppBar(
+          title: Text(
+            '둠칫! 둠칫!',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Color(0xffFFFF9090),
@@ -2431,7 +2460,8 @@ class _sixteen_gameState extends State<sixteen_game> {
                 ;
               })),
       backgroundColor: Color(0xfff7eded),
-    );
+    ),
+      onWillPop: () {},);
   }
 }
 
@@ -2444,9 +2474,10 @@ class seventeen_game extends StatefulWidget {
 class _seventeen_gameState extends State<seventeen_game> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
+    return WillPopScope(
+        child: Scaffold(
+          appBar: AppBar(
+           title: Text(
           '둠칫! 둠칫!',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
@@ -2578,7 +2609,8 @@ class _seventeen_gameState extends State<seventeen_game> {
                 ;
               })),
       backgroundColor: Color(0xfff7eded),
-    );
+    ),
+      onWillPop: () {},);
   }
 }
 
@@ -2591,9 +2623,10 @@ class eighteen_game extends StatefulWidget {
 class _eighteen_gameState extends State<eighteen_game> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
+    return WillPopScope(
+        child: Scaffold(
+         appBar: AppBar(
+          title: Text(
           '둠칫! 둠칫!',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
@@ -2725,7 +2758,8 @@ class _eighteen_gameState extends State<eighteen_game> {
                 ;
               })),
       backgroundColor: Color(0xfff7eded),
-    );
+    ),
+      onWillPop: () {},);
   }
 }
 
@@ -2738,9 +2772,10 @@ class nineteen_game extends StatefulWidget {
 class _nineteen_gameState extends State<nineteen_game> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
+    return WillPopScope(
+        child: Scaffold(
+         appBar: AppBar(
+         title: Text(
           '둠칫! 둠칫!',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
@@ -2872,7 +2907,8 @@ class _nineteen_gameState extends State<nineteen_game> {
                 ;
               })),
       backgroundColor: Color(0xfff7eded),
-    );
+    ),
+      onWillPop: () {},);
   }
 }
 
@@ -2885,9 +2921,10 @@ class twenty_game extends StatefulWidget {
 class _twenty_gameState extends State<twenty_game> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
+    return WillPopScope(
+        child: Scaffold(
+         appBar: AppBar(
+         title: Text(
           '둠칫! 둠칫!',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
@@ -2965,7 +3002,7 @@ class _twenty_gameState extends State<twenty_game> {
                                           onPressed: () {
                                             sublist.clear();
                                             count = 0;
-                                            Get.off(TabPage());
+                                            Get.off(four_page());
                                           },
                                         ),
                                         FlatButton(
@@ -2973,7 +3010,7 @@ class _twenty_gameState extends State<twenty_game> {
                                           onPressed: () {
                                             sublist.clear();
                                             count = 0;
-                                            Navigator.of(context).pop();
+                                            Get.off(TabPage());
                                           },
                                         )
                                       ]);
@@ -3016,7 +3053,7 @@ class _twenty_gameState extends State<twenty_game> {
                                           onPressed: () {
                                             sublist.clear();
                                             count = 0;
-                                            Get.off(TabPage());
+                                            Get.off(four_page());
                                           },
                                         ),
                                         FlatButton(
@@ -3024,7 +3061,7 @@ class _twenty_gameState extends State<twenty_game> {
                                           onPressed: () {
                                             sublist.clear();
                                             count = 0;
-                                            Navigator.of(context).pop();
+                                            Get.off(TabPage());
                                           },
                                         )
                                       ]);
@@ -3069,7 +3106,7 @@ class _twenty_gameState extends State<twenty_game> {
                                         onPressed: () {
                                           sublist.clear();
                                           count = 0;
-                                          Get.off(TabPage());
+                                          Get.off(four_page());
                                         },
                                       ),
                                       FlatButton(
@@ -3077,7 +3114,7 @@ class _twenty_gameState extends State<twenty_game> {
                                         onPressed: () {
                                           sublist.clear();
                                           count = 0;
-                                          Navigator.of(context).pop();
+                                          Get.off(TabPage());
                                         },
                                       )
                                     ]);
@@ -3126,7 +3163,7 @@ class _twenty_gameState extends State<twenty_game> {
                                           onPressed: () {
                                             sublist.clear();
                                             count = 0;
-                                            Get.off(TabPage());
+                                            Get.off(four_page());
                                           },
                                         ),
                                         FlatButton(
@@ -3134,7 +3171,7 @@ class _twenty_gameState extends State<twenty_game> {
                                           onPressed: () {
                                             sublist.clear();
                                             count = 0;
-                                            Navigator.of(context).pop();
+                                            Get.off(TabPage());
                                           },
                                         )
                                       ]);
@@ -3146,6 +3183,7 @@ class _twenty_gameState extends State<twenty_game> {
                 ;
               })),
       backgroundColor: Color(0xfff7eded),
-    );
+    ),
+      onWillPop: () {},);
   }
 }
