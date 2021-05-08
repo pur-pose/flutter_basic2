@@ -42,8 +42,9 @@ class MyPage extends StatelessWidget {
     ),
         body : Center(
           child: Column(children: <Widget>
-          [Padding(padding: EdgeInsets.all(20.0)),
-            Image.asset('images/logo.jpg',width: 500,height: 200,),
+          [Padding(padding: EdgeInsets.all(10.0)),
+            Image.asset('images/logo_fin.png', width: 350, height: 200,),
+            Padding(padding: EdgeInsets.all(10.0)),
             Image.asset('images/dancing.jpg',width: 300, height: 140,),
             Padding(padding: EdgeInsets.all(20.0)),
             StreamBuilder(
@@ -57,9 +58,9 @@ class MyPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text("${snapshot.data.displayName}님 환영합니다.",
-                            style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold)),
-
+                            style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold))
                       ],
+
                     ),
                   );
                 }

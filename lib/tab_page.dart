@@ -43,9 +43,12 @@ class _TabPageState extends State<TabPage> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("${snapshot.data.displayName}님",
-                            textAlign: TextAlign.right,
-                              style: TextStyle(fontSize:18,fontWeight: FontWeight.bold, height: 1,
+                            Container(
+                              width : MediaQuery.of(context).size.width,
+                              child: Text("${snapshot.data.displayName}님",
+                              textAlign: TextAlign.right,
+                                style: TextStyle(fontSize:18,fontWeight: FontWeight.bold, height: 1,
+                                ),
                               ),
                             )
                           ],
