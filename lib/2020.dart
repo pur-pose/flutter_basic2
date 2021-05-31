@@ -2992,7 +2992,7 @@ class _twenty_gameState extends State<twenty_game> {
                                       content: SingleChildScrollView(
                                         child: ListBody(
                                           children: <Widget>[
-                                            Text('점수 : $score / 20'),
+                                            Text('점수 :  $score/ 20'),
                                           ],
                                         ),
                                       ),
@@ -3006,7 +3006,7 @@ class _twenty_gameState extends State<twenty_game> {
                                           },
                                         ),
                                         FlatButton(
-                                          child: Text('종료'),
+                                          child: Image.asset('images/종료.png',width: 120, height: 40,),
                                           onPressed: () {
                                             sublist.clear();
                                             count = 0;
@@ -3043,7 +3043,7 @@ class _twenty_gameState extends State<twenty_game> {
                                       content: SingleChildScrollView(
                                         child: ListBody(
                                           children: <Widget>[
-                                            Text('점수 : $score / 20'),
+                                            Text('점수 :  $score/ 20'),
                                           ],
                                         ),
                                       ),
@@ -3057,7 +3057,7 @@ class _twenty_gameState extends State<twenty_game> {
                                           },
                                         ),
                                         FlatButton(
-                                          child: Text('종료'),
+                                          child: Image.asset('images/종료.png',width: 120, height: 40,),
                                           onPressed: () {
                                             sublist.clear();
                                             count = 0;
@@ -3096,7 +3096,7 @@ class _twenty_gameState extends State<twenty_game> {
                                     content: SingleChildScrollView(
                                       child: ListBody(
                                         children: <Widget>[
-                                          Text('점수 : $score / 20'),
+                                          Text('점수 :  $score / 20'),
                                         ],
                                       ),
                                     ),
@@ -3110,7 +3110,7 @@ class _twenty_gameState extends State<twenty_game> {
                                         },
                                       ),
                                       FlatButton(
-                                        child: Text('종료'),
+                                        child: Image.asset('images/종료_f.png',width: 120, height: 40,),
                                         onPressed: () {
                                           sublist.clear();
                                           count = 0;
@@ -3153,13 +3153,14 @@ class _twenty_gameState extends State<twenty_game> {
                                       content: SingleChildScrollView(
                                         child: ListBody(
                                           children: <Widget>[
-                                            Text('점수 : $score / 20'),
+                                            Text('점수 :  $score / 20'),
                                           ],
                                         ),
                                       ),
                                       actions: <Widget>[
                                         FlatButton(
-                                          child: Text('다시시작'),
+                                          child:
+                                          Image.asset('images/다시시작_f.png',width: 120, height: 50,),
                                           onPressed: () {
                                             sublist.clear();
                                             count = 0;
@@ -3167,11 +3168,15 @@ class _twenty_gameState extends State<twenty_game> {
                                           },
                                         ),
                                         FlatButton(
-                                          child: Text('종료'),
-                                          onPressed: () {
+                                          child :
+                                            Image.asset('images/종료_f.png',width: 120, height: 50,),
+                                            onPressed: (){
                                             sublist.clear();
                                             count = 0;
-                                            Get.off(TabPage());
+                                            Navigator.push(context,
+                                              MaterialPageRoute<void>(builder: (BuildContext context)
+                                              {return TabPage();}),
+                                            );
                                           },
                                         )
                                       ]);

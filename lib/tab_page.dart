@@ -43,8 +43,13 @@ class _TabPageState extends State<TabPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
+
                               width : MediaQuery.of(context).size.width-30,
-                              child: Text("${snapshot.data.displayName}님",
+
+                              /*child:
+                              Image.asset('user-2.png', width: 30, height: 30,),*/
+                              child:
+                              Text("${snapshot.data.displayName}님",
                               textAlign: TextAlign.right,
                                 style: TextStyle(fontSize:18,fontWeight: FontWeight.bold, height: 1,
                                 ),
@@ -56,8 +61,8 @@ class _TabPageState extends State<TabPage> {
                     }
                   },
                 ),
-                Image.asset('images/logo2.png',width: 600,height: 230,),
-                Padding(padding: EdgeInsets.only(top:50.0)),
+                Image.asset('images/tab2.png',width: 1200, height: 200,),
+                Padding(padding: EdgeInsets.only(top:80.0)),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     onSurface: Color(0xffFFFF9090),

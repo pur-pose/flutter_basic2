@@ -41,9 +41,9 @@ class MyPage extends StatelessWidget {
         body : Center(
           child: Column(children: <Widget>
           [Padding(padding: EdgeInsets.all(10.0)),
-            Image.asset('images/logo_fin.png', width: 350, height: 200,),
+            Image.asset('images/그림1.png', width: 350, height: 200,),
             Padding(padding: EdgeInsets.all(10.0)),
-            Image.asset('images/dancing.jpg',width: 300, height: 140,),
+            Image.asset('images/1.gif', width: 300, height: 150,),
             Padding(padding: EdgeInsets.all(20.0)),
             StreamBuilder(
               stream: FirebaseAuth.instance.authStateChanges(),
