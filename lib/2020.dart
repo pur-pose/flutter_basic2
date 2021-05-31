@@ -2998,7 +2998,7 @@ class _twenty_gameState extends State<twenty_game> {
                                       ),
                                       actions: <Widget>[
                                         FlatButton(
-                                          child: Text('다시시작'),
+                                          child:  Image.asset('images/다시시작_f.png',width: 120, height: 40,),
                                           onPressed: () {
                                             sublist.clear();
                                             count = 0;
@@ -3049,7 +3049,7 @@ class _twenty_gameState extends State<twenty_game> {
                                       ),
                                       actions: <Widget>[
                                         FlatButton(
-                                          child: Text('다시시작'),
+                                          child:  Image.asset('images/다시시작_f.png',width: 120, height: 40,),
                                           onPressed: () {
                                             sublist.clear();
                                             count = 0;
@@ -3102,7 +3102,7 @@ class _twenty_gameState extends State<twenty_game> {
                                     ),
                                     actions: <Widget>[
                                       FlatButton(
-                                        child: Text('다시시작'),
+                                        child: Image.asset('images/다시시작_f.png',width: 120, height: 40,),
                                         onPressed: () {
                                           sublist.clear();
                                           count = 0;
@@ -3160,7 +3160,7 @@ class _twenty_gameState extends State<twenty_game> {
                                       actions: <Widget>[
                                         FlatButton(
                                           child:
-                                          Image.asset('images/다시시작_f.png',width: 120, height: 50,),
+                                          Image.asset('images/다시시작_f.png',width: 120, height: 40,),
                                           onPressed: () {
                                             sublist.clear();
                                             count = 0;
@@ -3169,7 +3169,7 @@ class _twenty_gameState extends State<twenty_game> {
                                         ),
                                         FlatButton(
                                           child :
-                                            Image.asset('images/종료_f.png',width: 120, height: 50,),
+                                            Image.asset('images/종료_f.png',width: 120, height: 40,),
                                             onPressed: (){
                                             sublist.clear();
                                             count = 0;
